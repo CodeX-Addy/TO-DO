@@ -6,7 +6,7 @@ import threading
 import time
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'b59346afcc6894694975ade6406cc47885b3ec4be1cd567810e41c9fa0683b2d'
+app.config['SECRET_KEY'] = 'SECRET_KEY'
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
