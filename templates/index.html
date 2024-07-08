@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Your To-Do List</h1>
+        <ul>
+            {% for todo in todos %}
+                <li>
+                    {{ todo.title }} - {{ todo.deadline }}
+                    <a href="/edit/{{ todo.id }}">Edit</a>
+                    <form action="/delete/{{ todo.id }}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="/add">Add To-Do</a>
+        <a href="/logout">Logout</a>
+
+        <h2>Notifications</h2>
+        <ul>
+            {% for notification in notifications %}
+                <li>
+                    {{ notification.message }} - {{ notification.created_at }}
+                    <form action="/notifications/mark_as_read/{{ notification.id }}" method="post">
+                        <button type="submit">Mark as read</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
